@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tfarras/nestjs-firebase-admin-sdk.git"
+    "url": "git+https://github.com/tfarras/nestjs-firebase-admin.git"
   },
   "bugs": {
-    "url": "https://github.com/tfarras/nestjs-firebase-admin-sdk/issues"
+    "url": "https://github.com/tfarras/nestjs-firebase-admin/issues"
   },
-  "homepage": "https://github.com/tfarras/nestjs-firebase-admin-sdk#readme",
+  "homepage": "https://github.com/tfarras/nestjs-firebase-admin#readme",
   "peerDependencies": {
     "@nestjs/common": "^6.0.0",
     "firebase-admin": "^8.10.0"
