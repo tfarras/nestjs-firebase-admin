@@ -24,12 +24,12 @@ npm install @tfarras/nestjs-firebase-admin
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { FirebaseAdminModule } from '@tfarras/nestjs-firebase-admin'
+import { FirebaseAdminCoreModule } from '@tfarras/nestjs-firebase-admin'
 import * as admin from 'firebase-admin'
  
 @Module({
   imports: [
-    FirebaseAdminModule.forRootAsync({
+    FirebaseAdminCoreModule.forRootAsync({
       useFactory: () => ({
         credential: admin.credential.applicationDefault()
       })
