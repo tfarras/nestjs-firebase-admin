@@ -1,6 +1,6 @@
 {
   "name": "@tfarras/nestjs-firebase-admin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "NestJS Module for Firebase Admin SDK",
   "author": "Taimoor Farras <farrastaimoor@gmail.com>",
   "readmeFilename": "README.md",
