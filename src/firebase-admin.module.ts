@@ -1,18 +1,22 @@
-import { Global, Module, DynamicModule } from '@nestjs/common';
-import { FirebaseAdminModuleAsyncOptions } from './firebase-admin.interface';
-import { FIREBASE_ADMIN_MODULE_OPTIONS, FIREBASE_ADMIN_INJECT } from './firebase-admin.constant';
-import * as admin from 'firebase-admin';
+import { Global, Module, DynamicModule } from "@nestjs/common";
+import { FirebaseAdminModuleAsyncOptions } from "./firebase-admin.interface";
+import {
+  FIREBASE_ADMIN_MODULE_OPTIONS,
+  FIREBASE_ADMIN_INJECT,
+} from "./firebase-admin.constant";
+import * as admin from "firebase-admin";
 
 @Global()
 @Module({})
-export class FirebaseAdminCoreModule {
+export class FirebaseAdminModule {
   static forRoot(options: admin.AppOptions): DynamicModule {
     const firebaseAdminModuleOptions = {
       provide: FIREBASE_ADMIN_MODULE_OPTIONS,
       useValue: options,
     };
 
-    const app = admin.apps.length === 0 ? admin.initializeApp(options) : admin.apps[0];
+    const app =
+      admin.apps.length === 0 ? admin.initializeApp(options) : admin.apps[0];
 
     const firebaseAuthencationProvider = {
       provide: FIREBASE_ADMIN_INJECT,
@@ -20,7 +24,7 @@ export class FirebaseAdminCoreModule {
     };
 
     return {
-      module: FirebaseAdminCoreModule,
+      module: FirebaseAdminModule,
       providers: [firebaseAdminModuleOptions, firebaseAuthencationProvider],
       exports: [firebaseAdminModuleOptions, firebaseAuthencationProvider],
     };
@@ -36,7 +40,8 @@ export class FirebaseAdminCoreModule {
     const firebaseAuthencationProvider = {
       provide: FIREBASE_ADMIN_INJECT,
       useFactory: (opt: admin.AppOptions) => {
-        const app = admin.apps.length === 0 ? admin.initializeApp(opt) : admin.apps[0];
+        const app =
+          admin.apps.length === 0 ? admin.initializeApp(opt) : admin.apps[0];
 
         return app;
       },
@@ -44,7 +49,7 @@ export class FirebaseAdminCoreModule {
     };
 
     return {
-      module: FirebaseAdminCoreModule,
+      module: FirebaseAdminModule,
       imports: options.imports,
       providers: [firebaseAdminModuleOptions, firebaseAuthencationProvider],
       exports: [firebaseAdminModuleOptions, firebaseAuthencationProvider],
